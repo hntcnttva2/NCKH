@@ -136,3 +136,10 @@ header {
     content: '👤';
     font-size: 18px;
 }
+
+#status {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+

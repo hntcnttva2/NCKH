@@ -10,28 +10,104 @@
     <div class="container">
         <aside class="sidebar">
             <div class="logo">
-                <img src="logo.png" alt="Logo Trường Đại Học GTVT">
+                <img src="logo.png" alt="Logo Trường Đại Học GTVT" width="100%">
                 <p>Đại Học Giao Thông Vận Tải</p>
             </div>
             <nav>
                 <ul>
-                    <li class="active">🏠 Trang chủ</li>
-                    <li>📝 Lịch dạy</li>
-                    <li>📅 Điểm danh</li>
+                    <li onclick="navigateTo('home')">🏠 Trang chủ</li>
+                    <li onclick="navigateTo('schedule')">📝 Lịch học</li>
+                    <li onclick="navigateTo('attendance')">📅 Điểm danh</li>
                 </ul>
             </nav>
         </aside>
         
-
-        <main class="content">
+        <main class="content" id="main-content">
             <header>
                 <div class="search-container">
                     <input type="text" class="search-bar" placeholder="Tìm kiếm thông tin...">
-                    <i class="search-icon">🔍</i>
                 </div>                
                 <div class="user">Hồ Thị Ngọc Tú</div>
             </header>
+            <div id="content-area">
+                <h2>📝 Điểm danh</h2>
+                <div id="attendance-list">
+                    <div class="subject">
+                        <span>📖 Toán</span>
+                        <button onclick="startAttendance()">Điểm danh</button>
+                    </div>
+                    <div class="subject">
+                        <span>🔬 Vật lý</span>
+                        <button onclick="startAttendance()">Điểm danh</button>
+                    </div>
+                    <div class="subject">
+                        <span>💻 Lập trình</span>
+                        <button onclick="startAttendance()">Điểm danh</button>
+                    </div>
+                </div>
+                <h3>Đăng ký khuôn mặt</h3>
+                <div class="register-form">
+                    <input type="text" placeholder="Tên giáo viên" id="teacher-name">
+                    <input type="text" placeholder="Mã giáo viên" id="teacher-id">
+                    <button onclick="registerFace()">Đăng ký</button>
+                </div>
+                <video id="camera" width="100%" autoplay></video>
+            </div>
         </main>
     </div>
 </body>
 </html>
+<script>
+    function navigateTo(section) {
+        const mainContent = document.getElementById("content-area");
+        if (section === 'home') {
+            mainContent.innerHTML = `<h2>Chào mừng đến với Trang chủ</h2><p>Chọn một mục từ menu để xem nội dung.</p>`;
+        } else if (section === 'schedule') {
+            mainContent.innerHTML = `
+                <h2>📅 Lịch học của bạn</h2>
+                <ul>
+                    <li>📖 Toán - Thứ 2, 08:00 - 10:00</li>
+                    <li>🔬 Vật lý - Thứ 3, 09:00 - 11:00</li>
+                    <li>💻 Lập trình - Thứ 5, 13:00 - 15:00</li>
+                </ul>`;
+        } else if (section === 'attendance') {
+            mainContent.innerHTML = `
+                <h2>📝 Điểm danh</h2>
+                <div id="attendance-list">
+                    <div class="subject">
+                        <p>📖 Toán</p>
+                        <button onclick="startAttendance()">Điểm danh</button>
+                    </div>
+                    <div class="subject">
+                        <p>🔬 Vật lý</p>
+                        <button onclick="startAttendance()">Điểm danh</button>
+                    </div>
+                    <div class="subject">
+                        <p>💻 Lập trình</p>
+                        <button onclick="startAttendance()">Điểm danh</button>
+                    </div>
+                </div>
+                <h3>Đăng ký khuôn mặt</h3>
+                <input type="text" placeholder="Tên giáo viên" id="teacher-name">
+                <input type="text" placeholder="Mã giáo viên" id="teacher-id">
+                <button onclick="registerFace()">Đăng ký</button>
+                <video id="camera" width="100%" autoplay></video>
+            `;
+        }
+    }
+    
+    function startAttendance() {
+        const video = document.getElementById("camera");
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                video.srcObject = stream;
+            })
+            .catch(err => {
+                alert("Không thể mở camera: " + err.message);
+            });
+    }
+    
+    function registerFace() {
+        alert("Chức năng đăng ký khuôn mặt đang phát triển.");
+    }
+</script>
