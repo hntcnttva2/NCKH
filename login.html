@@ -10,15 +10,16 @@
             event.preventDefault();
             let username = document.getElementById('username').value;
             let password = document.getElementById('password').value;
-
-            if ((username === 'hs' && password === '123') ||
-                (username === 'gv' && password === '456')) {
-                window.location.href = 'index.html';
+    
+            if (username === 'hs' && password === '123') {
+                window.location.href = 'student.html';
+            } else if (username === 'gv' && password === '456') {
+                window.location.href = 'teacher.html';
             } else {
                 alert('Tên đăng nhập hoặc mật khẩu không đúng!');
             }
         }
-    </script>
+    </script>    
 </head>
 <body>
     <div class="login-container">
