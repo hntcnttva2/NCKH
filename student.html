@@ -15,7 +15,7 @@
             </div>
             <nav>
                 <ul>
-                    <li class="active">🏠 Trang chủ</li>
+                    <li>🏠 Trang chủ</li>
                     <li>📝 Lịch học</li>
                     <li>📅 Điểm danh</li>
                 </ul>
@@ -23,7 +23,7 @@
         </aside>
         
 
-        <main class="content">
+        <main class="content" id="main-content">
             <header>
                 <div class="search-container">
                     <input type="text" class="search-bar" placeholder="Tìm kiếm thông tin...">
@@ -31,7 +31,63 @@
                 </div>                
                 <div class="user">Hồ Thị Ngọc Tú</div>
             </header>
-        </main>
+            <div id="content-area">
+                <h2>Chào mừng đến với Trang chủ</h2>
+                <p>Chọn một mục từ menu để xem nội dung.</p>
+            </div>
+        </main>        
     </div>
 </body>
 </html>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    // Lấy danh sách các mục menu
+    const menuItems = document.querySelectorAll(".sidebar nav ul li");
+    
+    // Lấy phần hiển thị nội dung chính
+    const mainContent = document.getElementById("content-area");
+
+    // Hàm loại bỏ class "active" khỏi tất cả các mục menu
+    function removeActiveClass() {
+        menuItems.forEach(item => item.classList.remove("active"));
+    }
+
+    // Xử lý khi click vào "Lịch học"
+    menuItems[1].addEventListener("click", function () {
+        removeActiveClass(); // Xóa class active cũ
+        this.classList.add("active"); // Thêm class active vào mục được chọn
+        
+        mainContent.innerHTML = `
+            <h2>📅 Lịch học của bạn</h2>
+            <ul>
+                <li>📖 Toán - Thứ 2, 08:00 - 10:00</li>
+                <li>🔬 Vật lý - Thứ 3, 09:00 - 11:00</li>
+                <li>💻 Lập trình - Thứ 5, 13:00 - 15:00</li>
+            </ul>
+        `;
+    });
+
+    // Xử lý khi click vào "Trang chủ"
+    menuItems[0].addEventListener("click", function () {
+        removeActiveClass();
+        this.classList.add("active");
+
+        mainContent.innerHTML = `
+            <h2>Chào mừng đến với Trang chủ</h2>
+            <p>Chọn một mục từ menu để xem nội dung.</p>
+        `;
+    });
+
+    // Xử lý khi click vào "Điểm danh"
+    menuItems[2].addEventListener("click", function () {
+        removeActiveClass();
+        this.classList.add("active");
+
+        mainContent.innerHTML = `
+            <h2>📝 Điểm danh</h2>
+            <p>Chức năng điểm danh đang phát triển.</p>
+        `;
+    });
+});
+    </script>
+    
