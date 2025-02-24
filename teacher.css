@@ -1,0 +1,138 @@
+/* Định dạng chung */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Container chính */
+.container {
+    display: flex;
+    height: 100vh;
+    background-color: #f3f4f6;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 270px; /* Độ rộng tăng nhẹ */
+    background-color: #0d1f59; /* Màu xanh dương đậm hơn */
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo {
+    text-align: center;
+    padding: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo img {
+    max-width: 100px;
+    height: auto;
+}
+
+.logo p {
+    margin-top: 8px;
+    font-size: 14px; /* Giảm kích thước chữ */
+    font-weight: bold;
+    color: #FFD700; /* Màu vàng */
+    text-align: center;
+    white-space: nowrap; /* Ngăn xuống dòng */
+    line-height: 1.2; /* Điều chỉnh khoảng cách dòng */
+}
+
+
+
+/* Navigation */
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    color: #e0e7ff; /* Màu chữ */
+    padding: 12px 15px;
+    margin: 6px 0;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+.sidebar nav ul li:hover,
+.sidebar nav ul li.active {
+    background-color: #2563eb; /* Giữ màu nền xanh */
+    color: white; /* Chữ trắng khi chọn */
+}
+
+
+.sidebar nav ul li i {
+    margin-right: 12px;
+    font-size: 18px;
+}
+
+/* Nội dung chính */
+.content {
+    flex-grow: 1;
+    background-color: #e0e7ff;
+    padding: 25px;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Thanh tìm kiếm */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f9fafb;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.search-bar {
+    width: 250px;
+    height: 35px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: transparent;
+}
+
+.search-icon {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* User */
+.user {
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user::before {
+    content: '👤';
+    font-size: 18px;
+}
